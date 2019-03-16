@@ -6,7 +6,7 @@
 
   <groupId>com.amitg.fanstistime</groupId>
   <artifactId>FanstisTime</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
 
   <name>FanstisTime</name>
   <!-- FIXME change it to the project's website -->
