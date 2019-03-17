@@ -5,8 +5,9 @@ import java.io.FileOutputStream;
 import java.util.Scanner; 
 
 class Config {
+   private static String fileName = "fantistime.config"; // Default file name
+
    private String location;
-   private static String fileName = "fantistime"; // Default file name
    private File f;
 
    Scanner scan;   
@@ -16,7 +17,17 @@ class Config {
 
       // Set to this file location
       this.location = location;
+
       // If the file doesn't exist, exit
+      f = new File(location);
+      if (!f.exists()) {
+         System.err.println("Error: there is no such a file " + location + ".");
+         System.exit(-1);
+      }
+      if (f.isDirectory()) {
+         System.err.println("Error: the config file location (" + location + ") contains a directory.");
+         System.exit(-1);
+      }
       // Read and parse the file
    }
    Config() throws java.io.FileNotFoundException, java.io.IOException {
@@ -56,6 +67,8 @@ class Config {
       fos.write(("    \"ServerSocket\":" + scan.nextLine() + ",\n").getBytes());
       System.out.print("Enter check time interval (in seconds, eg: 3): ");
       fos.write(("    \"checkInterval\":" + scan.nextLine() + ",\n").getBytes());
+      System.out.print("Enter idle sensitivity (from 0 to 1, higher is more sensitive, eg: 0.8): ");
+      fos.write(("    \"idleSensitivity\":" + scan.nextLine() + ",\n").getBytes());
       System.out.print("Enter checks per report (eg: 8): ");
       fos.write(("    \"checksPerReport\":" + scan.nextLine() + "\n").getBytes());
       fos.write("}\n".getBytes());
