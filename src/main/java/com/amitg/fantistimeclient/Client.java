@@ -8,7 +8,7 @@ public class Client {
    static short checksPerReport = 8;
    static float idleSensitivity = 0.8f;
 
-   public static void main( String[] args ) {
+   public static void main (String[] args) {
       try {
          Config c = new Config();
       } catch (Exception e) {

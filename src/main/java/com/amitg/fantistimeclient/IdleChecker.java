@@ -58,7 +58,7 @@ public class IdleChecker extends Thread {
             }
          }
          float pr = 1-((float)mouseMovements/(float)period);
-         if (pr >= sensitivity)
+         if (pr < sensitivity)
             reportFunc.report();
       }
    }
