@@ -74,9 +74,8 @@ class Config {
       inputStream.close();
       String text = new String(data, "UTF-8");
       genson = new Genson();
-      ConfigValues cv = new ConfigValues();
+      cv = new ConfigValues();
       cv = genson.deserialize(text, ConfigValues.class);
-      System.out.println(cv.serverIP);
    }
 
    private void createConfig() throws java.io.FileNotFoundException, java.io.IOException {
