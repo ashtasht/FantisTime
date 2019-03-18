@@ -1,18 +1,20 @@
 package com.amitg.fanstistimeclient;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.*;
 import java.util.Scanner; 
+import com.owlike.genson.*;
 
 class Config {
-   private static String fileName = "fantistime.config"; // Default file name
+   private static String fileName = "fantistime.json"; // Default file name
 
    private String location;
    private File f;
+   private ConfigValues cv;
 
-   Scanner scan;   
+   private Scanner scan;   
+   private Genson genson;
 
-   Config(String location) {
+   Config(String location) throws FileNotFoundException, IOException {
       scan = new Scanner(System.in);
 
       // Set to this file location
@@ -29,6 +31,8 @@ class Config {
          System.exit(-1);
       }
       // Read and parse the file
+      parse(f);
+
    }
    Config() throws java.io.FileNotFoundException, java.io.IOException {
       scan = new Scanner(System.in);
@@ -56,15 +60,32 @@ class Config {
          createConfig();
       }
       // Read and parse the file
+      parse(f);
+   }
+
+   public ConfigValues getValues() {
+      return cv;
+   }
+
+   private void parse(File file) throws FileNotFoundException, IOException {
+      FileInputStream inputStream = new FileInputStream(file);
+      byte[] data = new byte[(int) file.length()];
+      inputStream.read(data);
+      inputStream.close();
+      String text = new String(data, "UTF-8");
+      genson = new Genson();
+      ConfigValues cv = new ConfigValues();
+      cv = genson.deserialize(text, ConfigValues.class);
+      System.out.println(cv.serverIP);
    }
 
    private void createConfig() throws java.io.FileNotFoundException, java.io.IOException {
       FileOutputStream fos = new FileOutputStream(f);
       fos.write("{\n".getBytes());
       System.out.print("Enter server IP (eg: 127.0.0.1): " + scan.nextLine());
-      fos.write(("    \"ServerIP\":\"" + scan.nextLine() + "\",\n").getBytes());
+      fos.write(("    \"serverIP\":\"" + scan.nextLine() + "\",\n").getBytes());
       System.out.print("Enter server socket (eg: 3141): ");
-      fos.write(("    \"ServerSocket\":" + scan.nextLine() + ",\n").getBytes());
+      fos.write(("    \"serverSocket\":" + scan.nextLine() + ",\n").getBytes());
       System.out.print("Enter check time interval (in seconds, eg: 3): ");
       fos.write(("    \"checkInterval\":" + scan.nextLine() + ",\n").getBytes());
       System.out.print("Enter idle sensitivity (from 0 to 1, higher is more sensitive, eg: 0.8): ");
@@ -74,4 +95,5 @@ class Config {
       fos.write("}\n".getBytes());
       fos.close();
    }
+
 }

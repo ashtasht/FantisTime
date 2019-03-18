@@ -1,6 +1,5 @@
 package com.amitg.fanstistimeclient;
 
-import java.awt.MouseInfo;
 
 public class Client {
    static short port = 3141;
