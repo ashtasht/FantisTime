@@ -6,6 +6,6 @@ class ConfigValues {
    public String serverIP;
    public short serverPort;
    public short checkInterval;
-   public short idleSensitivity;
+   public float idleSensitivity;
    public short checksPerReport;
 }

@@ -73,25 +73,34 @@ class Config {
       inputStream.read(data);
       inputStream.close();
       String text = new String(data, "UTF-8");
-      genson = new Genson();
       cv = new ConfigValues();
-      cv = genson.deserialize(text, ConfigValues.class);
+      cv = new Genson().deserialize(text, ConfigValues.class);
    }
 
    private void createConfig() throws java.io.FileNotFoundException, java.io.IOException {
       FileOutputStream fos = new FileOutputStream(f);
-      fos.write("{\n".getBytes());
+      ConfigValues vals = new ConfigValues();
+      //fos.write("{\n".getBytes());
       System.out.print("Enter server IP (eg: 127.0.0.1): " + scan.nextLine());
-      fos.write(("    \"serverIP\":\"" + scan.nextLine() + "\",\n").getBytes());
+      vals.serverIP = scan.nextLine();
+      //fos.write(("    \"serverIP\":\"" + scan.nextLine() + "\",\n").getBytes());
       System.out.print("Enter server port (eg: 3141): ");
-      fos.write(("    \"serverPort\":" + scan.nextLine() + ",\n").getBytes());
+      //fos.write(("    \"serverPort\":" + scan.nextLine() + ",\n").getBytes());
+      vals.serverPort = scan.nextShort();
       System.out.print("Enter check time interval (in seconds, eg: 3): ");
-      fos.write(("    \"checkInterval\":" + scan.nextLine() + ",\n").getBytes());
+      vals.checkInterval = scan.nextShort();
+      //fos.write(("    \"checkInterval\":" + scan.nextLine() + ",\n").getBytes());
       System.out.print("Enter idle sensitivity (from 0 to 1, higher is more sensitive, eg: 0.8): ");
-      fos.write(("    \"idleSensitivity\":" + scan.nextLine() + ",\n").getBytes());
+      vals.idleSensitivity = scan.nextFloat();
+      //fos.write(("    \"idleSensitivity\":" + scan.nextLine() + ",\n").getBytes());
       System.out.print("Enter checks per report (eg: 8): ");
-      fos.write(("    \"checksPerReport\":" + scan.nextLine() + "\n").getBytes());
-      fos.write("}\n".getBytes());
+      vals.checksPerReport = scan.nextShort();
+      //fos.write(("    \"checksPerReport\":" + scan.nextLine() + "\n").getBytes());
+      //fos.write("}\n".getBytes());
+      Genson genson = new GensonBuilder()
+         .useIndentation(true)
+         .create();
+      fos.write(genson.serializeBytes(vals));
       fos.close();
    }
 
