@@ -4,7 +4,7 @@ class ConfigValues {
    ConfigValues(){}
 
    public String serverIP;
-   public short serverSocket;
+   public short serverPort;
    public short checkInterval;
    public short idleSensitivity;
    public short checksPerReport;

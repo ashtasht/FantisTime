@@ -84,8 +84,8 @@ class Config {
       fos.write("{\n".getBytes());
       System.out.print("Enter server IP (eg: 127.0.0.1): " + scan.nextLine());
       fos.write(("    \"serverIP\":\"" + scan.nextLine() + "\",\n").getBytes());
-      System.out.print("Enter server socket (eg: 3141): ");
-      fos.write(("    \"serverSocket\":" + scan.nextLine() + ",\n").getBytes());
+      System.out.print("Enter server port (eg: 3141): ");
+      fos.write(("    \"serverPort\":" + scan.nextLine() + ",\n").getBytes());
       System.out.print("Enter check time interval (in seconds, eg: 3): ");
       fos.write(("    \"checkInterval\":" + scan.nextLine() + ",\n").getBytes());
       System.out.print("Enter idle sensitivity (from 0 to 1, higher is more sensitive, eg: 0.8): ");

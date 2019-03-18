@@ -10,17 +10,17 @@ FantisTime's client uses a json file for configurations. This file containes con
 Here is a simple fantistime.json file:
 ```
 {
-    "ServerIP":"127.0.0.1",
-    "ServerSocket":3141,
+    "serverIP":"127.0.0.1",
+    "serverPort":3141,
     "checkInterval":3,
     "idleSensitivity":0.8,
     "checksPerReport":8
 }
 ```
-#### `ServerIP`
+#### `serverIP`
 The IP address of the server (`127.0.0.1` for localhost). 
-#### `ServerSocket`
-The socket the server is listening to. It should much the socket in the server configurations file.
+#### `serverSocket`
+The port the server is listening to. It should much the port in the server configurations file.
 #### `checkInterval`
 FantisTime checks idle by looking on the mouse location every few seconds and compare it. `checkInterval` is the amount of seconds between each check.
 #### `idleSensitivity`
