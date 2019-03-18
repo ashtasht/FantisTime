@@ -26,7 +26,7 @@ FantisTime checks idle by looking on the mouse location every few seconds and co
 #### `idleSensitivity`
 How much sensitive should FantisTime be to unintended mouse movements. The value have to be between 1 (the most sensitive) to 0 (idle all the time).
 #### `checkPerReport`
-How huch checks of the mouse location to do before deciding if idling or not.
+How huch checks of the mouse location to do before deciding if idle or not.
 
 ## TODO
 1. Make it more secure and harder to trick: add `password` to the local configurations file and move everything releated to measuring to the server configurations, send the password each time to the server (in a secure way) and get the configuration from it.
