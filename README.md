@@ -18,7 +18,7 @@ Here is a simple fantistime.json file:
 }
 ```
 #### `serverIP`
-The IP address of the server (`127.0.0.1` for localhost). 
+The IP address of the server. 
 #### `serverSocket`
 The port the server is listening to. It should much the port in the server configurations file.
 #### `checkInterval`
@@ -26,7 +26,7 @@ FantisTime checks idle by looking on the mouse location every few seconds and co
 #### `idleSensitivity`
 How much sensitive should FantisTime be to unintended mouse movements. The value have to be between 1 (the most sensitive) to 0 (idle all the time).
 #### `checkPerReport`
-How huch checks of the mouse location to do before deciding if idle or not.
+How huch checks of the mouse location to do before deciding if idle or not. We recommend you to choose a high number if you mainly use the keyboard.
 
 ## TODO
 1. Make it more secure and harder to trick: add `password` to the local configurations file and move everything releated to measuring to the server configurations, send the password each time to the server (in a secure way) and get the configuration from it.

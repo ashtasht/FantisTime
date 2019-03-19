@@ -52,7 +52,7 @@ class Config {
          System.exit(-1);
       }
       if(!f.exists()) {
-         System.out.println("The default file location (" + location + ") does not contains any file, do you want to create a new configurations file? (y/n)");
+         System.out.println("The default file location (" + location + ") does not contain any file, do you want to create a new configurations file? (y/n)");
          boolean answer = scan.next().toLowerCase().startsWith("y");
          if (!answer)
             System.exit(0);
