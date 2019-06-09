@@ -1,0 +1,24 @@
+{
+  "name": "fantistimeserver",
+  "version": "1.0.0",
+  "description": "The private server of FantisTime.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "fantis",
+    "time",
+    "fantistime",
+    "limiter"
+  ],
+  "author": "amitg",
+  "license": "SEE LICENSE IN ../LICENSE",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "bunyan": "^1.8.12",
+    "express": "^4.16.4",
+    "js-sha512": "^0.8.0",
+    "simple-node-logger": "^18.12.22"
+  }
+}
